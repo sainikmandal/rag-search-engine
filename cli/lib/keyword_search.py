@@ -6,7 +6,7 @@ MAX_RESULTS = 5
 def search_movies(query: str, limit: int = MAX_RESULTS) -> list[dict]:
     results = []
     for movie in load_movies():
-        if query in movie["title"]:
+        if query.lower() in movie["title"].lower():
             results.append(movie)
     results.sort(key=lambda movie: movie["id"])
     return results[:limit]
